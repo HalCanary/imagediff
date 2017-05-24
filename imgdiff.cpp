@@ -15,12 +15,26 @@
   This program is intended for use in scripts to sort pairs of images by
   sameness.
 
-  On MacOS:
+  On MacOS with Homebrew:
+    brew install libpng
     git clone https://github.com/HalCanary/imagediff.git
     cd imagediff
-    brew install libpng
-    BP="$(brew --prefix)"
-    CPPFLAGS="-I \"$BP/include\"" LDFLAGS="-L \"$BP/lib\"" make
+    ./maker.sh "$(brew --prefix)"
+    ./imgdiff FILE1.png FILE2.png
+
+  On Posix system without libpng1.6+ already installed:
+    # Download source to libpng version 1.6+...
+    md5sum ~/Downloads/libpng-1.6.29.tar.xz
+    # verify checksum
+    cd /tmp
+    tar xf ~/Downloads/libpng-1.6.29.tar.xz
+    cd libpng-1.6.29
+    PREFIX=~/local
+    ./configure --prefix="$PREFIX" && make && make install
+    cd /tmp
+    git clone https://github.com/HalCanary/imagediff.git
+    cd imagediff
+    ./maker.sh "$PREFIX"
     ./imgdiff FILE1.png FILE2.png
 */
 
