@@ -1,4 +1,4 @@
-== Image Diff ==
+## Image Diff ##
 
 Provides a metric for measuring the difference between two PNG images.
 
@@ -12,7 +12,7 @@ A non-zero return value indicates that something went wrong.
 This program is intended for use in scripts to sort pairs of images by
 sameness.
 
-== Build ==
+## Build ##
 
 On Posix systems with libpng 1.6+ installed in standard locations:
 
